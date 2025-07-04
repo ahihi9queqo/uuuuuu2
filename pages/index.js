@@ -1,3 +1,5 @@
+// pages/index.js
+
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 
@@ -20,15 +22,19 @@ export default function Home() {
   }, []);
 
   const options = {
-    title: { text: "Biểu đồ nhiệt độ" },
-    xAxis: { type: "datetime" },
+    title: { text: "Biểu đồ nhiệt độ ESP32" },
+    xAxis: { type: "datetime", title: { text: "Thời gian" } },
     yAxis: { title: { text: "Nhiệt độ (°C)" } },
-    series: [{ name: "ESP32", data, type: "line" }]
+    series: [{
+      name: "ESP32",
+      data,
+      type: "line"
+    }]
   };
 
   return (
-    <div style={{ padding: 20 }}>
-      <h2>Giám sát nhiệt độ ESP32</h2>
+    <div style={{ padding: "20px" }}>
+      <h1>Giám sát nhiệt độ ESP32</h1>
       <HighchartsReact highcharts={Highcharts} options={options} />
     </div>
   );
